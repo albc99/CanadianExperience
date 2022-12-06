@@ -78,13 +78,12 @@ std::shared_ptr<Machine> Machine1Factory::Create()
     motor->GetSource()->AddSink(flag->GetSink());
 
     // The pulley driven by the motor
-    auto pulley1 = std::make_shared<Pulley>();
+    auto pulley1 = std::make_shared<Pulley>(30);
     pulley1->SetImage(mImagesDir + L"/pulley1.png");
     pulley1->SetPosition(wxPoint(motor->GetPosition().x, motor->GetPosition().y - 100));
-    pulley1->Circle(20);
     machine->AddComponent(pulley1);
-//    // Connect the motor as a source to the pulley as a sink
-//    motor->GetSource()->AddSink(pulley1->GetSink());
+    // Connect the motor as a source to the pulley as a sink
+    motor->GetSource()->AddSink(pulley1->GetSink());
 
     return machine;
 

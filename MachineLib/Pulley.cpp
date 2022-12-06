@@ -18,9 +18,10 @@
 //    this->Component::SetRotation(rotation);
 //}
 
-Pulley::Pulley()
+Pulley::Pulley(double radius)
 {
     mSink.SetComponent(this);
+    this->Circle(radius);
 }
 
 //void Pulley::Draw(std::shared_ptr<wxGraphicsContext> graphics, wxPoint location)

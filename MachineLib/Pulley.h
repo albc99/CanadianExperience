@@ -27,7 +27,7 @@ private:
 
 public:
     /// Constructor
-    Pulley();
+    Pulley(double radius);
 
     /// Destructor
     virtual ~Pulley() = default;
@@ -42,7 +42,7 @@ public:
 
 //    virtual void Draw(std::shared_ptr<wxGraphicsContext> graphics, wxPoint location) override;
 //
-//    RotationSink *GetSink(){ return &mSink; }
+    RotationSink *GetSink(){ return &mSink; }
 };
 
 #endif //CANADIANEXPERIENCE_PULLEY_H
