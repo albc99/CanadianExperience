@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/Users/albc/Desktop/CSE_335/proj2/Project2/Project2Starter/cmake-build-debug/_deps/miniaudio-subbuild/CMakeFiles/miniaudio-populate"
+		},
+		{
+			"file" : "/Users/albc/Desktop/CSE_335/proj2/Project2/Project2Starter/cmake-build-debug/_deps/miniaudio-subbuild/CMakeFiles/miniaudio-populate.rule"
+		},
+		{
+			"file" : "/Users/albc/Desktop/CSE_335/proj2/Project2/Project2Starter/cmake-build-debug/_deps/miniaudio-subbuild/CMakeFiles/miniaudio-populate-complete.rule"
+		},
+		{
+			"file" : "/Users/albc/Desktop/CSE_335/proj2/Project2/Project2Starter/cmake-build-debug/_deps/miniaudio-subbuild/miniaudio-populate-prefix/src/miniaudio-populate-stamp/miniaudio-populate-build.rule"
+		},
+		{
+			"file" : "/Users/albc/Desktop/CSE_335/proj2/Project2/Project2Starter/cmake-build-debug/_deps/miniaudio-subbuild/miniaudio-populate-prefix/src/miniaudio-populate-stamp/miniaudio-populate-configure.rule"
+		},
+		{
+			"file" : "/Users/albc/Desktop/CSE_335/proj2/Project2/Project2Starter/cmake-build-debug/_deps/miniaudio-subbuild/miniaudio-populate-prefix/src/miniaudio-populate-stamp/miniaudio-populate-download.rule"
+		},
+		{
+			"file" : "/Users/albc/Desktop/CSE_335/proj2/Project2/Project2Starter/cmake-build-debug/_deps/miniaudio-subbuild/miniaudio-populate-prefix/src/miniaudio-populate-stamp/miniaudio-populate-install.rule"
+		},
+		{
+			"file" : "/Users/albc/Desktop/CSE_335/proj2/Project2/Project2Starter/cmake-build-debug/_deps/miniaudio-subbuild/miniaudio-populate-prefix/src/miniaudio-populate-stamp/miniaudio-populate-mkdir.rule"
+		},
+		{
+			"file" : "/Users/albc/Desktop/CSE_335/proj2/Project2/Project2Starter/cmake-build-debug/_deps/miniaudio-subbuild/miniaudio-populate-prefix/src/miniaudio-populate-stamp/miniaudio-populate-patch.rule"
+		},
+		{
+			"file" : "/Users/albc/Desktop/CSE_335/proj2/Project2/Project2Starter/cmake-build-debug/_deps/miniaudio-subbuild/miniaudio-populate-prefix/src/miniaudio-populate-stamp/miniaudio-populate-test.rule"
+		},
+		{
+			"file" : "/Users/albc/Desktop/CSE_335/proj2/Project2/Project2Starter/cmake-build-debug/_deps/miniaudio-subbuild/miniaudio-populate-prefix/src/miniaudio-populate-stamp/miniaudio-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"miniaudio-populate"
+		],
+		"name" : "miniaudio-populate"
+	}
+}
