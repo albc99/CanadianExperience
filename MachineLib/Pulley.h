@@ -11,11 +11,17 @@
 #include "Component.h"
 
 #include "RotationSink.h"
+#include "RotationSource.h"
 
 class Pulley : public Component {
 private:
     double mRadius;
+    double mRotation;
+    double mTime;
+
     RotationSink mSink;
+    RotationSource mSource;
+
 //
 //public:
 //    Pulley();
@@ -38,11 +44,18 @@ public:
     /// Assignment operator/disabled
     void operator=(const Pulley&) = delete;
 
-//    virtual void SetRotation(double rotationSpeed) override;
+    virtual void SetRotation(double rotation) override;
 
 //    virtual void Draw(std::shared_ptr<wxGraphicsContext> graphics, wxPoint location) override;
-//
+    virtual void Update(double time) override;
     RotationSink *GetSink(){ return &mSink; }
+    RotationSource *GetSource() { return &mSource; }
+    double GetRadius() { return mRadius; }
+
+    void RotateSink(double speed);
+
+    void Drive(std::shared_ptr<Pulley> pulley);
+
 };
 
 #endif //CANADIANEXPERIENCE_PULLEY_H

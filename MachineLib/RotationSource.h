@@ -12,6 +12,7 @@
 #include "Component.h"
 
 class Motor;
+class Pulley;
 
 class RotationSource {
 private:
@@ -20,6 +21,7 @@ private:
     /// The sinks
     std::vector<RotationSink*> mSinks;
 
+    Pulley *mPulley;
 
 public:
     /// Constructor
@@ -32,6 +34,7 @@ public:
     void operator=(const RotationSource &) = delete;
 
     void UpdateRotation(double rotation);
+
     void Update(double time);
 
     void AddSink(RotationSink *sink); // set source in here.

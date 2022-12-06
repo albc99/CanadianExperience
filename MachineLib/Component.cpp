@@ -27,3 +27,9 @@ void Component::Update(double time)
 {
     mTime = time;
 }
+
+void Component::SetPosition(double x, double y)
+{
+    mPosition.x = x;
+    mPosition.y = y;
+}

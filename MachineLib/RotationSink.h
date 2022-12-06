@@ -11,13 +11,14 @@
 #include "Component.h"
 
 class RotationSource;
-
+class Pulley;
 
 class RotationSink {
 private:
-    double rotationSpeed;
+    double mRotationSpeed;
     RotationSource *mRotationSource;
     Component *mComponent;
+
 
 public:
     /// Constructor
@@ -31,7 +32,7 @@ public:
 
     void UpdateRotation(double rotation);
 
-    void SetRotationSpeed(double rotationSpeed);
+    void SetRotationSpeed(double rotationSpeed) { mComponent->SetRotationSpeed(rotationSpeed); }
 
     void SetSource(RotationSource *source) { mRotationSource = source; }
 

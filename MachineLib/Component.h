@@ -15,12 +15,13 @@ class Component : public cse335::Polygon {
 private:
 
     wxPoint mPosition;
-    double mRotation;
+
     double mTime;
 
     Machine *mMachine;
 
 public:
+    double mRotationSpeed;
     /// Constructor
     Component();
 
@@ -35,9 +36,10 @@ public:
 
     virtual void Draw(std::shared_ptr<wxGraphicsContext> graphics, wxPoint location);
 
-    virtual void SetPosition(wxPoint position) { mPosition = position; }
+    virtual void SetPosition(double x, double y);
 
-    wxPoint GetPosition() { return mPosition; }
+    double GetX() { return mPosition.x; }
+    double GetY() { return mPosition.y; }
 
     virtual void Update(double time);
 

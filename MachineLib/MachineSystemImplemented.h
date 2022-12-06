@@ -78,7 +78,7 @@ public:
 
     void SetRunning(bool running);
 
-    void SetRotationSpeed(double rotationSpeed) { mMachine ->SetRotationSpeed(rotationSpeed); }
+    void SetRotationSpeed(double rotationSpeed) { mMachine->SetRotationSpeed(rotationSpeed); }
 };
 
 #endif //CANADIANEXPERIENCE_MACHINESYSTEMIMPLEMENTED_H

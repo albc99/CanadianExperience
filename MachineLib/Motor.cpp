@@ -46,8 +46,8 @@ void Motor::Draw(std::shared_ptr<wxGraphicsContext> graphics, wxPoint location)
 {
     this->Component::Draw(graphics, location);
 
-    mRotor.DrawPolygon(graphics, location.x + this->GetPosition().x,
-            location.y + this->GetPosition().y);
+    mRotor.DrawPolygon(graphics, location.x + this->GetX(),
+            location.y + this->GetY());
 }
 
 void Motor::Update(double time)

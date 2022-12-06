@@ -4,6 +4,7 @@
  */
 
 #include "RotationSink.h"
+#include "RotationSource.h"
 
 RotationSink::RotationSink()
 {
@@ -12,6 +13,7 @@ RotationSink::RotationSink()
 
 void RotationSink::UpdateRotation(double rotation)
 {
-    mComponent->SetRotation(rotation);
+    mComponent->SetRotationSpeed(rotation);
+    //mRotationSource->UpdateRotation(rotation);
 }
 
