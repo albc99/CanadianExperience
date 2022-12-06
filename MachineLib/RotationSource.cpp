@@ -24,7 +24,3 @@ void RotationSource::UpdateRotation(double rotation)
     }
 
 }
-void RotationSource::Update(double time)
-{
-
-}
