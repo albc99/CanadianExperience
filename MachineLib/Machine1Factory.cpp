@@ -72,16 +72,17 @@ std::shared_ptr<Machine> Machine1Factory::Create()
     auto flag = std::make_shared<Shape>();
     flag->SetImage(mImagesDir + L"/msu-flag.png");
     flag->Rectangle(0, 0, 28, 60);
-    flag->SetPosition(wxPoint(0, -50));
+    flag->SetPosition(wxPoint(0, 0));
     machine->AddComponent(flag);
 
     motor->GetSource()->AddSink(flag->GetSink());
 
-//    // The pulley driven by the motor
-//    auto pulley1 = std::make_shared<Pulley>(30);
-//    pulley1->SetImage(mImagesDir + L"/pulley2.png");
-//    pulley1->SetPosition(wxPoint(motor->GetPosition().x, motor->GetPosition().y - 50));
-//
+    // The pulley driven by the motor
+    auto pulley1 = std::make_shared<Pulley>();
+    pulley1->SetImage(mImagesDir + L"/pulley1.png");
+    pulley1->SetPosition(wxPoint(motor->GetPosition().x, motor->GetPosition().y - 100));
+    pulley1->Circle(20);
+    machine->AddComponent(pulley1);
 //    // Connect the motor as a source to the pulley as a sink
 //    motor->GetSource()->AddSink(pulley1->GetSink());
 

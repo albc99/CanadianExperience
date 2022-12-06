@@ -16,6 +16,11 @@ void RotationSource::AddSink(RotationSink *sink)
     mSinks.push_back(sink);
 }
 
+void RotationSource::Update(double rotation)
+{
+    UpdateRotation(rotation);
+}
+
 void RotationSource::UpdateRotation(double rotation)
 {
     for (auto sink : mSinks)
