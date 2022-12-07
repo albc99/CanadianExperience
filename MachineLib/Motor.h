@@ -16,7 +16,7 @@ class Motor : public Component {
 private:
     cse335::Polygon mRotor;
 
-    double mRotationSpeed  = 1;
+    double mRotationSpeed;
 
     double mTime;
 

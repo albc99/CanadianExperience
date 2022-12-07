@@ -20,6 +20,7 @@ void Component::Draw(std::shared_ptr<wxGraphicsContext> graphics, wxPoint locati
 
 void Component::SetRotationSpeed(double rotationSpeed)
 {
+    mRotationSpeed = rotationSpeed;
     this->SetRotation(rotationSpeed);
 }
 
