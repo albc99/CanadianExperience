@@ -20,8 +20,11 @@ private:
 
     Machine *mMachine;
 
-public:
     double mRotationSpeed;
+
+
+public:
+
     /// Constructor
     Component();
 
@@ -44,6 +47,8 @@ public:
     virtual void Update(double time);
 
     virtual void SetRotationSpeed(double rotationSpeed);
+
+    double GetTime()  { return mTime; }
 };
 
 #endif //CANADIANEXPERIENCE_COMPONENT_H

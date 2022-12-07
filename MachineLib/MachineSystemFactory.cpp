@@ -31,7 +31,7 @@ MachineSystemFactory::MachineSystemFactory(std::wstring resourcesDir, ma_engine*
  */
 std::shared_ptr<MachineSystem> MachineSystemFactory::CreateMachineSystem()
 {
-    return std::make_shared<MachineSystemImplemented>();
+    return std::make_shared<MachineSystemImplemented>(mResourcesDir);
 }
 
 

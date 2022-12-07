@@ -13,7 +13,7 @@ RotationSink::RotationSink()
 
 void RotationSink::UpdateRotation(double rotation)
 {
-    mComponent->SetRotationSpeed(rotation);
-    //mRotationSource->UpdateRotation(rotation);
+    mComponent->SetRotation(rotation * mRotationSpeed);
+    //SetRotationSpeed(rotation);
 }
 

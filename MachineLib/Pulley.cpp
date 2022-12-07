@@ -12,33 +12,41 @@ Pulley::Pulley(double radius)
     mSink.SetComponent(this);
     this->Circle(radius);
 
-    RotateSink(mRotation);
+    //RotateSink(mRotation);
 }
 
-void Pulley::SetRotation(double rotation)
-{
-    mRotationSpeed = rotation;
-    //Component::SetRotation(rotation);
-    mSource.UpdateRotation(rotation);
-
-}
+//
+//void Pulley::SetRotation(double rotation)
+//{
+//    mRotation = rotation;
+//    mSource.UpdateRotation(rotation);
+//}
 
 void Pulley::Update(double time)
 {
     mTime = time;
 }
 
-void Pulley::RotateSink(double speed)
+void Pulley::SetRotation(double rotation)
 {
-    SetRotation(mRotationSpeed * mTime * speed);
-    mSource.UpdateRotation(mRotationSpeed);
+
+    //SetRotation(mRotationSpeed * mTime * rotation);
+    mSource.UpdateRotation(rotation);
+    Component::SetRotation(rotation);
+    //  msink.setrotationspeed
 }
 
-void Pulley::Drive(std::shared_ptr<Pulley> pulley)
+//void Pulley::RotateSink(double speed)
+//{
+//    SetRotation(mRotationSpeed * mTime * speed);
+//    mSource.UpdateRotation(mRotationSpeed);
+//}
+//
+void Pulley::Drive(std::shared_ptr<Pulley> pulley, bool over)
 {
+    //mSource.UpdateRotation(mRotationSpeed);
     mSource.AddSink(pulley->GetSink());
     pulley->SetRotation(mRadius/pulley->GetRadius());
-
 }
 //void Pulley::Draw(std::shared_ptr<wxGraphicsContext> graphics, wxPoint location)
 //{

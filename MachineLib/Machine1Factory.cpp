@@ -70,26 +70,16 @@ std::shared_ptr<Machine> Machine1Factory::Create()
 //    machine->AddComponent(motor);
 //
 
-
     // The motor
     auto motor = std::make_shared<Motor>(mImagesDir);
-    motor->SetPosition(-222, -48);
+    motor->SetPosition(-222, -95);
     // Make the motor rotate counter-clockwise at 0.2
     // revolutions per second. Negative means counter-clockwise
     motor->SetRotationSpeed(-0.2);
     machine->AddComponent(motor);
 
-    // The rotating flag
-    auto flag = std::make_shared<Shape>();
-    flag->SetImage(mImagesDir + L"/msu-flag.png");
-    flag->Rectangle(0, 0, 28, 60);
-    flag->SetPosition(-222, -48);
-    machine->AddComponent(flag);
-
-    motor->GetSource()->AddSink(flag->GetSink());
-
     // The pulley driven by the motor
-    auto pulley1 = std::make_shared<Pulley>(50);
+    auto pulley1 = std::make_shared<Pulley>(30);
     pulley1->SetImage(mImagesDir + L"/pulley2.png");
     pulley1->SetPosition(motor->GetX(), motor->GetY());
 
@@ -97,46 +87,78 @@ std::shared_ptr<Machine> Machine1Factory::Create()
     motor->GetSource()->AddSink(pulley1->GetSink());
 
     // Two temporary pulleys to get pulleys up and going
-    auto pulley2t = std::make_shared<Pulley>(10);
+    auto pulley2t = std::make_shared<Pulley>(20);
     pulley2t->SetImage(mImagesDir + L"/pulley1.png");
     pulley2t->SetPosition(-150, -150);
     machine->AddComponent(pulley2t);
 
-    // The rotating flag
-    auto flag2 = std::make_shared<Shape>();
-    flag2->SetImage(mImagesDir + L"/msu-flag.png");
-    flag2->Rectangle(0, 0, 28, 60);
-    flag2->SetPosition(-150, -150);
-    machine->AddComponent(flag2);
-
-    pulley2t->GetSource()->AddSink(flag2->GetSink());
-
-
     // Bottom left pulley
-    auto pulley3t = std::make_shared<Pulley>(10);
+    auto pulley3t = std::make_shared<Pulley>(20);
     pulley3t->SetImage(mImagesDir + L"/pulley1.png");
     pulley3t->SetPosition(-150, -32);
     machine->AddComponent(pulley3t);
 
-    // The rotating flag
-    auto flag3 = std::make_shared<Shape>();
-    flag3->SetImage(mImagesDir + L"/msu-flag.png");
-    flag3->Rectangle(0, 0, 28, 60);
-    flag3->SetPosition(-150, -32);
-    machine->AddComponent(flag3);
-
-    pulley3t->GetSource()->AddSink(flag3->GetSink());
-
-
-    // The order we add to the machine determines the drawing order.
-    // This ensures the serpentine belt is drawn after the pulleys
-    // and peg wheels to ensure it's on the top.
+    pulley1->GetSource()->AddSink(pulley2t->GetSink());
+    pulley1->GetSource()->AddSink(pulley3t->GetSink());
 
     pulley1->Drive(pulley2t);
     pulley1->Drive(pulley3t);
 
 
+    // The order we add to the machine determines the drawing order.
+    // This ensures the serpentine belt is drawn after the pulleys
+    // and peg wheels to ensure it's on the top.
     machine->AddComponent(pulley1);
+
+
+//    // The rotating flag
+//    auto flag = std::make_shared<Shape>();
+//    flag->SetImage(mImagesDir + L"/msu-flag.png");
+//    flag->Rectangle(0, 0, 28, 60);
+//    flag->SetPosition(-222, -48);
+//    machine->AddComponent(flag);
+//
+//    motor->GetSource()->AddSink(flag->GetSink());
+
+
+//
+//    // Two temporary pulleys to get pulleys up and going
+//    auto pulley2t = std::make_shared<Pulley>(20);
+//    pulley2t->SetImage(mImagesDir + L"/pulley1.png");
+//    pulley2t->SetPosition(-150, -150);
+//    machine->AddComponent(pulley2t);
+//
+//    // The rotating flag
+//    auto flag2 = std::make_shared<Shape>();
+//    flag2->SetImage(mImagesDir + L"/msu-flag.png");
+//    flag2->Rectangle(0, 0, 28, 60);
+//    flag2->SetPosition(-150, -150);
+//    machine->AddComponent(flag2);
+//
+//    pulley2t->GetSource()->AddSink(flag2->GetSink());
+//
+//    // Bottom left pulley
+//    auto pulley3t = std::make_shared<Pulley>(20);
+//    pulley3t->SetImage(mImagesDir + L"/pulley1.png");
+//    pulley3t->SetPosition(-150, -32);
+//    machine->AddComponent(pulley3t);
+//
+//    // The rotating flag
+//    auto flag3 = std::make_shared<Shape>();
+//    flag3->SetImage(mImagesDir + L"/msu-flag.png");
+//    flag3->Rectangle(0, 0, 28, 60);
+//    flag3->SetPosition(-150, -32);
+//    machine->AddComponent(flag3);
+//
+//    pulley3t->GetSource()->AddSink(flag3->GetSink());
+//
+//
+//    // The order we add to the machine determines the drawing order.
+//    // This ensures the serpentine belt is drawn after the pulleys
+//    // and peg wheels to ensure it's on the top.
+//
+//    pulley1->Drive(pulley2t);
+//    pulley1->Drive(pulley3t);
 
     return machine;
 

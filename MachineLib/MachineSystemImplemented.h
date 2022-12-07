@@ -23,12 +23,15 @@ private:
 
     std::shared_ptr<Machine> mMachine = nullptr;
 
-    std::wstring mResourcesDir = L"/Users/albc/Desktop/CSE_335/proj2/Project2/Project2Starter/MachineLib/resources";
+    std::wstring mResourcesDir = L"/resources";
     ma_engine* mAudioEngine;
 
 public:
     /// Constructor
-    MachineSystemImplemented();
+    MachineSystemImplemented(std::wstring resourcesDir);
+
+    /// Constructor
+    MachineSystemImplemented() = delete;
 
     /// Destructor
     ~MachineSystemImplemented() = default;

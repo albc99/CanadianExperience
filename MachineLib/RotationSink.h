@@ -15,7 +15,7 @@ class Pulley;
 
 class RotationSink {
 private:
-    double mRotationSpeed;
+    double mRotationSpeed = 1;
     RotationSource *mRotationSource;
     Component *mComponent;
 
@@ -32,7 +32,7 @@ public:
 
     void UpdateRotation(double rotation);
 
-    void SetRotationSpeed(double rotationSpeed) { mComponent->SetRotationSpeed(rotationSpeed); }
+    void SetRotationSpeed(double rotationSpeed) { mRotationSpeed = rotationSpeed; }
 
     void SetSource(RotationSource *source) { mRotationSource = source; }
 

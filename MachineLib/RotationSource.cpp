@@ -27,5 +27,4 @@ void RotationSource::UpdateRotation(double rotation)
     {
         sink->UpdateRotation(rotation);
     }
-
 }

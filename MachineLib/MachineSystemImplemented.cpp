@@ -8,7 +8,7 @@
 #include "MachineSystemImplemented.h"
 
 
-MachineSystemImplemented::MachineSystemImplemented()
+MachineSystemImplemented::MachineSystemImplemented(std::wstring resourcesDir) : mResourcesDir(resourcesDir)
 {
     SetMachineNumber(1);
 }
