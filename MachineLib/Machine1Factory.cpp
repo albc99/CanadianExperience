@@ -39,12 +39,12 @@ Machine1Factory::Machine1Factory(std::wstring resourcesDir, ma_engine* audioEngi
  */
 std::shared_ptr<Machine> Machine1Factory::Create()
 {
-    // The machine itself
+
+// The machine itself
     // In this solution the machine number is passed
     // to the working machine constructor, so it knows
     // its number.
     auto machine = std::make_shared<Machine>(1);
-
 
     // The framework. This is a basic shape.
     auto base = std::make_shared<Shape>();
@@ -53,22 +53,6 @@ std::shared_ptr<Machine> Machine1Factory::Create()
     base->Rectangle(-wid/2, 0, wid, hit);
     base->SetImage(mImagesDir + L"/framework.png");
     machine->AddComponent(base);
-//
-//    // The motor
-//    auto motor = std::make_shared<Motor>(mImagesDir);
-//    motor->SetPosition(wxPoint(-120, -75));
-//    // Make the motor rotate counter-clockwise at 0.2
-//    // revolutions per second. Negative means counter-clockwise
-//    motor->SetRotationSpeed(-0.2);
-//    machine->AddComponent(motor);
-//    // A motor
-//
-//    // A motor
-//    auto motor = make_shared<Motor>(mImagesDir, Motor::Types::Modern);
-//    motor->SetPosition(0, 0);
-//    motor->SetSpeed(1);
-//    machine->AddComponent(motor);
-//
 
     // The motor
     auto motor = std::make_shared<Motor>(mImagesDir);
@@ -86,87 +70,9 @@ std::shared_ptr<Machine> Machine1Factory::Create()
     // Connect the motor as a source to the pulley as a sink
     motor->GetSource()->AddSink(pulley1->GetSink());
 
-    //////////
-
-    // Two temporary pulleys to get pulleys up and going
-    auto pulley2t = std::make_shared<Pulley>(20);
-    pulley2t->SetImage(mImagesDir + L"/pulley1.png");
-    pulley2t->SetPosition(-150, -150);
-    machine->AddComponent(pulley2t);
-
-    // Bottom left pulley
-    auto pulley3t = std::make_shared<Pulley>(20);
-    pulley3t->SetImage(mImagesDir + L"/pulley1.png");
-    pulley3t->SetPosition(-150, -32);
-    machine->AddComponent(pulley3t);
-
-//    pulley1->GetSource()->AddSink(pulley2t->GetSink());
-//    pulley1->GetSource()->AddSink(pulley3t->GetSink());
-
-    pulley1->Drive(pulley2t);
-    pulley1->Drive(pulley3t);
-
-
-    // The order we add to the machine determines the drawing order.
-    // This ensures the serpentine belt is drawn after the pulleys
-    // and peg wheels to ensure it's on the top.
-    machine->AddComponent(pulley1);
-
-
-//    // The rotating flag
-//    auto flag = std::make_shared<Shape>();
-//    flag->SetImage(mImagesDir + L"/msu-flag.png");
-//    flag->Rectangle(0, 0, 28, 60);
-//    flag->SetPosition(-222, -48);
-//    machine->AddComponent(flag);
-//
-//    motor->GetSource()->AddSink(flag->GetSink());
-
-
-//
-//    // Two temporary pulleys to get pulleys up and going
-//    auto pulley2t = std::make_shared<Pulley>(20);
-//    pulley2t->SetImage(mImagesDir + L"/pulley1.png");
-//    pulley2t->SetPosition(-150, -150);
-//    machine->AddComponent(pulley2t);
-//
-//    // The rotating flag
-//    auto flag2 = std::make_shared<Shape>();
-//    flag2->SetImage(mImagesDir + L"/msu-flag.png");
-//    flag2->Rectangle(0, 0, 28, 60);
-//    flag2->SetPosition(-150, -150);
-//    machine->AddComponent(flag2);
-//
-//    pulley2t->GetSource()->AddSink(flag2->GetSink());
-//
-//    // Bottom left pulley
-//    auto pulley3t = std::make_shared<Pulley>(20);
-//    pulley3t->SetImage(mImagesDir + L"/pulley1.png");
-//    pulley3t->SetPosition(-150, -32);
-//    machine->AddComponent(pulley3t);
-//
-//    // The rotating flag
-//    auto flag3 = std::make_shared<Shape>();
-//    flag3->SetImage(mImagesDir + L"/msu-flag.png");
-//    flag3->Rectangle(0, 0, 28, 60);
-//    flag3->SetPosition(-150, -32);
-//    machine->AddComponent(flag3);
-//
-//    pulley3t->GetSource()->AddSink(flag3->GetSink());
-//
-//
-//    // The order we add to the machine determines the drawing order.
-//    // This ensures the serpentine belt is drawn after the pulleys
-//    // and peg wheels to ensure it's on the top.
-//
-//    pulley1->Drive(pulley2t);
-//    pulley1->Drive(pulley3t);
-
-    return machine;
-
-//    //
-//    // The instruments
-//    //
+    //
+    // The instruments
+    //
 //    auto kick = std::make_shared<Instrument>(mImagesDir + L"/drum.png",
 //            mAudioDir + L"/kick.wav",
 //            mAudioEngine);
@@ -201,15 +107,15 @@ std::shared_ptr<Machine> Machine1Factory::Create()
 //    cymbal->CenteredSquare(80);
 //    cymbal->SetPosition(188, -325);
 //    machine->AddComponent(cymbal);
-//
-//    // Define standard locations for the pulleys, peg wheels, and levers
-//    const int PulleyY = -164;
-//    int pulleyX = -115;             // For the first pulley
-//    const int IdlerY = -84;
-//    int idlerX = -80;               // For the first idler
-//    const int PulleySpacing = 80;   // How far the pulleys are apart
-//    const int LeverY = -229;        // Y location for a level
-//
+
+    // Define standard locations for the pulleys, peg wheels, and levers
+    const int PulleyY = -164;
+    int pulleyX = -115;             // For the first pulley
+    const int IdlerY = -84;
+    int idlerX = -80;               // For the first idler
+    const int PulleySpacing = 80;   // How far the pulleys are apart
+    const int LeverY = -229;        // Y location for a level
+
 //    /// Structure used to store data for the
 //    /// five different drum systems (columns)
 //    struct DrumData {
@@ -250,15 +156,15 @@ std::shared_ptr<Machine> Machine1Factory::Create()
 //        //
 //        // The peg wheel
 //        //
-//        auto pegWheel = std::make_shared<PegWheel>(mImagesDir);
-//        pegWheel->SetPosition(pulleyX, PulleyY);
-//        machine->AddComponent(pegWheel);
-//
-//        // Add the pegs
-//        for(double location : drumDatum.mPegLocations)
-//        {
-//            pegWheel->AddPeg(location / 16.0);
-//        }
+////        auto pegWheel = std::make_shared<PegWheel>(mImagesDir);
+////        pegWheel->SetPosition(pulleyX, PulleyY);
+////        machine->AddComponent(pegWheel);
+////
+////        // Add the pegs
+////        for(double location : drumDatum.mPegLocations)
+////        {
+////            pegWheel->AddPeg(location / 16.0);
+////        }
 //
 //        //
 //        // The pulley that drives the peg wheel
@@ -279,28 +185,28 @@ std::shared_ptr<Machine> Machine1Factory::Create()
 //        drumPulley->GetSource()->AddSink(pegWheel->GetSink());
 //        pegWheel->GetSink()->SetPhase(drumDatum.mPegWheelPhase);
 //
-//        //
-//        // The lever that the peg wheel trips
-//        //
-//        auto lever = std::make_shared<Lever>(mImagesDir);
-//        lever->SetPosition(pulleyX, LeverY);
-//        machine->AddComponent(lever);
-//        pegWheel->AddLever(lever);
-//
-//        //
-//        // The drumstick
-//        //
-//        auto stick = std::make_shared<Shape>();
-//        stick->Rectangle(-2, 2, 5, 80);
-//        stick->SetPosition(pulleyX, LeverY);
-//        stick->SetImage(mImagesDir + L"/drumstick.png");
-//        machine->AddComponent(stick);
-//
-//        lever->GetSource()->AddSink(stick->GetSink());
-//        stick->GetSink()->SetPhase(-0.02);
-//
-//        // Connect the lever (source of strikes) to the instrument
-//        lever->SetStruckComponent(drumDatum.mInstrument);
+////        //
+////        // The lever that the peg wheel trips
+////        //
+////        auto lever = std::make_shared<Lever>(mImagesDir);
+////        lever->SetPosition(pulleyX, LeverY);
+////        machine->AddComponent(lever);
+////        pegWheel->AddLever(lever);
+////
+////        //
+////        // The drumstick
+////        //
+////        auto stick = std::make_shared<Shape>();
+////        stick->Rectangle(-2, 2, 5, 80);
+////        stick->SetPosition(pulleyX, LeverY);
+////        stick->SetImage(mImagesDir + L"/drumstick.png");
+////        machine->AddComponent(stick);
+////
+////        lever->GetSource()->AddSink(stick->GetSink());
+////        stick->GetSink()->SetPhase(-0.02);
+////
+////        // Connect the lever (source of strikes) to the instrument
+////        lever->SetStruckComponent(drumDatum.mInstrument);
 //
 //        //
 //        // Idler pulleys between the peg wheel pulleys
@@ -321,6 +227,111 @@ std::shared_ptr<Machine> Machine1Factory::Create()
 //        pulleyX += PulleySpacing;
 //        idlerX += PulleySpacing;
 //    }
+
+    // Bottom right pulley
+    auto pulley2 = std::make_shared<Pulley>(20);
+    pulley2->SetImage(mImagesDir + L"/pulley1.png");
+    pulley2->SetPosition(200, -32);
+    machine->AddComponent(pulley2);
+    pulley1->Drive(pulley2);
+
+    // Bottom left pulley
+    auto pulley3 = std::make_shared<Pulley>(20);
+    pulley3->SetImage(mImagesDir + L"/pulley1.png");
+    pulley3->SetPosition(-150, -32);
+    machine->AddComponent(pulley3);
+    pulley1->Drive(pulley3);
+
+    // The order we add to the machine determines the drawing order.
+    // This ensures the serpentine belt is drawn after the pulleys
+    // and peg wheels to ensure it's on the top.
+    machine->AddComponent(pulley1);
+
+    //
+    // Pulley to drive the pulley that holds the flag
+    //
+    auto pulley4 = std::make_shared<Pulley>(15);
+    pulley4->SetImage(mImagesDir + L"/pulley3.png");
+    pulley4->SetPosition(pulley3->GetX(), pulley3->GetY());
+    pulley3->GetSource()->AddSink(pulley4->GetSink());
+    machine->AddComponent(pulley4);
+
+    // Idler to move the pulley belt over
+    auto idler1 = std::make_shared<Pulley>(10);
+    idler1->SetImage(mImagesDir + L"/idler1.png");
+    idler1->SetPosition(232, -200);
+    machine->AddComponent(idler1);
+    pulley4->Drive(idler1, true);
+
+    // Pulley that drive the flag
+    auto pulley5 = std::make_shared<Pulley>(15);
+    pulley5->SetImage(mImagesDir + L"/pulley3.png");
+    pulley5->SetPosition(248, -352);
+    machine->AddComponent(pulley5);
+    pulley4->Drive(pulley5);
+
+    // Other idler
+    auto idler2 = std::make_shared<Pulley>(10);
+    idler2->SetImage(mImagesDir + L"/idler1.png");
+    idler2->SetPosition(248, PulleyY);
+    machine->AddComponent(idler2);
+    pulley4->Drive(idler2);
+
+    // The rotating flag
+    auto flag = std::make_shared<Shape>();
+    flag->SetImage(mImagesDir + L"/msu-flag.png");
+    flag->Rectangle(0, 0, 28, 60);
+    flag->SetPosition(pulley5->GetX(), pulley5->GetY());
+    machine->AddComponent(flag);
+    pulley5->GetSource()->AddSink(flag->GetSink());
+
+    return machine;
+
+
+
+
+
+
+
+//    // The machine itself
+//    // In this solution the machine number is passed
+//    // to the working machine constructor, so it knows
+//    // its number.
+//    auto machine = std::make_shared<Machine>(1);
+//
+//    // The framework. This is a basic shape.
+//    auto base = std::make_shared<Shape>();
+//    int wid = 543;
+//    int hit = 366;
+//    base->Rectangle(-wid/2, 0, wid, hit);
+//    base->SetImage(mImagesDir + L"/framework.png");
+//    machine->AddComponent(base);
+//
+//    // The motor
+//    auto motor = std::make_shared<Motor>(mImagesDir);
+//    motor->SetPosition(-222, -95);
+//    // Make the motor rotate counter-clockwise at 0.2
+//    // revolutions per second. Negative means counter-clockwise
+//    motor->SetRotationSpeed(-0.2);
+//    machine->AddComponent(motor);
+//
+//    // The pulley driven by the motor
+//    auto pulley1 = std::make_shared<Pulley>(30);
+//    pulley1->SetImage(mImagesDir + L"/pulley2.png");
+//    pulley1->SetPosition(motor->GetX(), motor->GetY());
+//    machine->AddComponent(pulley1);
+//
+//    // Connect the motor as a source to the pulley as a sink
+//    motor->GetSource()->AddSink(pulley1->GetSink());
+//
+//
+//    // Define standard locations for the pulleys, peg wheels, and levers
+//    const int PulleyY = -164;
+//    int pulleyX = -115;             // For the first pulley
+//    const int IdlerY = -84;
+//    int idlerX = -80;               // For the first idler
+//    const int PulleySpacing = 80;   // How far the pulleys are apart
+//    const int LeverY = -229;        // Y location for a level
 //
 //    // Bottom right pulley
 //    auto pulley2 = std::make_shared<Pulley>(20);
@@ -339,14 +350,17 @@ std::shared_ptr<Machine> Machine1Factory::Create()
 //    // The order we add to the machine determines the drawing order.
 //    // This ensures the serpentine belt is drawn after the pulleys
 //    // and peg wheels to ensure it's on the top.
-//    machine->AddComponent(pulley1);
 //
 //    //
 //    // Pulley to drive the pulley that holds the flag
 //    //
+//
+//    // Used to keep track of hte last drum pulley added
+//    std::shared_ptr<Pulley> lastDrumPulley = pulley3;
+//
 //    auto pulley4 = std::make_shared<Pulley>(15);
 //    pulley4->SetImage(mImagesDir + L"/pulley3.png");
-//    pulley4->SetPosition(lastDrumPulley->GetPosition());
+//    pulley4->SetPosition(lastDrumPulley->GetX(), lastDrumPulley->GetY());
 //    lastDrumPulley->GetSource()->AddSink(pulley4->GetSink());
 //    machine->AddComponent(pulley4);
 //
@@ -375,9 +389,9 @@ std::shared_ptr<Machine> Machine1Factory::Create()
 //    auto flag = std::make_shared<Shape>();
 //    flag->SetImage(mImagesDir + L"/msu-flag.png");
 //    flag->Rectangle(0, 0, 28, 60);
-//    flag->SetPosition(pulley5->GetPosition());
+//    flag->SetPosition(pulley5->GetX(), pulley5->GetY());
 //    machine->AddComponent(flag);
 //    pulley5->GetSource()->AddSink(flag->GetSink());
-//
 //    return machine;
+
 }

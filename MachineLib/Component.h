@@ -23,6 +23,7 @@ private:
     double mRotationSpeed;
 
 
+
 public:
 
     /// Constructor
@@ -47,6 +48,8 @@ public:
     virtual void Update(double time);
 
     virtual void SetRotationSpeed(double rotationSpeed);
+
+    double GetRotationSpeed() { return mRotationSpeed; }
 
     double GetTime()  { return mTime; }
 };

@@ -53,9 +53,8 @@ public:
     RotationSink *GetSink(){ return &mSink; }
     RotationSource *GetSource() { return &mSource; }
     double GetRadius() { return mRadius; }
-//
-//    void RotateSink(double speed);
-//
+
+
     void Drive(std::shared_ptr<Pulley> pulley, bool over = true);
 
 };

@@ -61,4 +61,6 @@ void Motor::Update(double time)
 void Motor::SetRotationSpeed(double rotationSpeed)
 {
     mRotationSpeed = rotationSpeed;
+    Component::SetRotationSpeed(rotationSpeed);
+    //Component::
 }
