@@ -9,7 +9,7 @@
 #include "Shape.h"
 #include "Motor.h"
 #include "Pulley.h"
-//#include "PegWheel.h"
+#include "PegWheel.h"
 //#include "Lever.h"
 //#include "Instrument.h"
 
@@ -30,8 +30,6 @@ Machine1Factory::Machine1Factory(std::wstring resourcesDir, ma_engine* audioEngi
     mImagesDir = mResourcesDir + ImagesDirectory;
     mAudioDir = mResourcesDir + AudioDirectory;
 }
-
-
 
 /**
  * Factory method to create machine #1
@@ -56,7 +54,7 @@ std::shared_ptr<Machine> Machine1Factory::Create()
 
     // The motor
     auto motor = std::make_shared<Motor>(mImagesDir);
-    motor->SetPosition(-222, -95);
+    motor->SetPosition(-222, -48);
     // Make the motor rotate counter-clockwise at 0.2
     // revolutions per second. Negative means counter-clockwise
     motor->SetRotationSpeed(-0.2);
@@ -65,14 +63,14 @@ std::shared_ptr<Machine> Machine1Factory::Create()
     // The pulley driven by the motor
     auto pulley1 = std::make_shared<Pulley>(30);
     pulley1->SetImage(mImagesDir + L"/pulley2.png");
-    pulley1->SetPosition(motor->GetX(), motor->GetY());
+    pulley1->SetPosition(motor->GetX(), motor->GetY() - 50);
 
     // Connect the motor as a source to the pulley as a sink
     motor->GetSource()->AddSink(pulley1->GetSink());
 
-    //
-    // The instruments
-    //
+//    //
+//    // The instruments
+//    //
 //    auto kick = std::make_shared<Instrument>(mImagesDir + L"/drum.png",
 //            mAudioDir + L"/kick.wav",
 //            mAudioEngine);
@@ -144,9 +142,28 @@ std::shared_ptr<Machine> Machine1Factory::Create()
 //            {cowbell, {0, 4, 8, 12}, 10, 0.05},             // More cowbell!
 //            {cymbal, {8}, 20, 0.01}                         // Cymbal
 //    };
-//
-//    // Used to keep track of hte last drum pulley added
-//    std::shared_ptr<Pulley> lastDrumPulley;
+
+    // Used to keep track of hte last drum pulley added
+    std::shared_ptr<Pulley> lastDrumPulley = pulley1;
+
+    auto pulley_t = std::make_shared<Pulley>(25);
+    pulley_t->SetImage(mImagesDir + L"/pulley2.png");
+    pulley_t->SetPosition(pulleyX, PulleyY);
+    pulley1->Drive(pulley_t);
+
+    auto pegWheel = std::make_shared<PegWheel>(mImagesDir);
+    pegWheel->SetPosition(pulleyX, PulleyY);
+    pulley_t->GetSource()->AddSink(pegWheel->GetSink());
+
+    auto temp = {0, 4};
+        for(double location : temp)
+        {
+            pegWheel->AddPeg(location / 16.0);
+        }
+
+    machine->AddComponent(pegWheel);
+    machine->AddComponent(pulley_t);
+
 //
 //    for(int i=0; i<5; i++)
 //    {
@@ -156,15 +173,15 @@ std::shared_ptr<Machine> Machine1Factory::Create()
 //        //
 //        // The peg wheel
 //        //
-////        auto pegWheel = std::make_shared<PegWheel>(mImagesDir);
-////        pegWheel->SetPosition(pulleyX, PulleyY);
-////        machine->AddComponent(pegWheel);
-////
-////        // Add the pegs
-////        for(double location : drumDatum.mPegLocations)
-////        {
-////            pegWheel->AddPeg(location / 16.0);
-////        }
+//        auto pegWheel = std::make_shared<PegWheel>(mImagesDir);
+//        pegWheel->SetPosition(pulleyX, PulleyY);
+//        machine->AddComponent(pegWheel);
+//
+//        // Add the pegs
+//        for(double location : drumDatum.mPegLocations)
+//        {
+//            pegWheel->AddPeg(location / 16.0);
+//        }
 //
 //        //
 //        // The pulley that drives the peg wheel
@@ -185,28 +202,28 @@ std::shared_ptr<Machine> Machine1Factory::Create()
 //        drumPulley->GetSource()->AddSink(pegWheel->GetSink());
 //        pegWheel->GetSink()->SetPhase(drumDatum.mPegWheelPhase);
 //
-////        //
-////        // The lever that the peg wheel trips
-////        //
-////        auto lever = std::make_shared<Lever>(mImagesDir);
-////        lever->SetPosition(pulleyX, LeverY);
-////        machine->AddComponent(lever);
-////        pegWheel->AddLever(lever);
-////
-////        //
-////        // The drumstick
-////        //
-////        auto stick = std::make_shared<Shape>();
-////        stick->Rectangle(-2, 2, 5, 80);
-////        stick->SetPosition(pulleyX, LeverY);
-////        stick->SetImage(mImagesDir + L"/drumstick.png");
-////        machine->AddComponent(stick);
-////
-////        lever->GetSource()->AddSink(stick->GetSink());
-////        stick->GetSink()->SetPhase(-0.02);
-////
-////        // Connect the lever (source of strikes) to the instrument
-////        lever->SetStruckComponent(drumDatum.mInstrument);
+//        //
+//        // The lever that the peg wheel trips
+//        //
+//        auto lever = std::make_shared<Lever>(mImagesDir);
+//        lever->SetPosition(pulleyX, LeverY);
+//        machine->AddComponent(lever);
+//        pegWheel->AddLever(lever);
+//
+//        //
+//        // The drumstick
+//        //
+//        auto stick = std::make_shared<Shape>();
+//        stick->Rectangle(-2, 2, 5, 80);
+//        stick->SetPosition(pulleyX, LeverY);
+//        stick->SetImage(mImagesDir + L"/drumstick.png");
+//        machine->AddComponent(stick);
+//
+//        lever->GetSource()->AddSink(stick->GetSink());
+//        stick->GetSink()->SetPhase(-0.02);
+//
+//        // Connect the lever (source of strikes) to the instrument
+//        lever->SetStruckComponent(drumDatum.mInstrument);
 //
 //        //
 //        // Idler pulleys between the peg wheel pulleys
@@ -252,8 +269,8 @@ std::shared_ptr<Machine> Machine1Factory::Create()
     //
     auto pulley4 = std::make_shared<Pulley>(15);
     pulley4->SetImage(mImagesDir + L"/pulley3.png");
-    pulley4->SetPosition(pulley3->GetX(), pulley3->GetY());
-    pulley3->GetSource()->AddSink(pulley4->GetSink());
+    pulley4->SetPosition(lastDrumPulley->GetX(), lastDrumPulley->GetY());
+    lastDrumPulley->GetSource()->AddSink(pulley4->GetSink());
     machine->AddComponent(pulley4);
 
     // Idler to move the pulley belt over

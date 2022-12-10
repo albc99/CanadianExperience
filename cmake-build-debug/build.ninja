@@ -553,6 +553,14 @@ build MachineLib/CMakeFiles/MachineLib.dir/PegWheel.cpp.o: CXX_COMPILER__Machine
   OBJECT_DIR = MachineLib/CMakeFiles/MachineLib.dir
   OBJECT_FILE_DIR = MachineLib/CMakeFiles/MachineLib.dir
 
+build MachineLib/CMakeFiles/MachineLib.dir/Peg.cpp.o: CXX_COMPILER__MachineLib_Debug /Users/albc/Desktop/CSE_335/proj2/Project2/Project2Starter/MachineLib/Peg.cpp | MachineLib/CMakeFiles/MachineLib.dir/cmake_pch.hxx MachineLib/CMakeFiles/MachineLib.dir/cmake_pch.hxx.pch || cmake_object_order_depends_target_MachineLib
+  DEFINES = -DWXUSINGDLL -D_FILE_OFFSET_BITS=64 -D__WXMAC__ -D__WXOSX_COCOA__ -D__WXOSX__
+  DEP_FILE = MachineLib/CMakeFiles/MachineLib.dir/Peg.cpp.o.d
+  FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.0.sdk -mmacosx-version-min=10.14 -std=gnu++17 -Winvalid-pch -Xclang -include-pch -Xclang /Users/albc/Desktop/CSE_335/proj2/Project2/Project2Starter/cmake-build-debug/MachineLib/CMakeFiles/MachineLib.dir/cmake_pch.hxx.pch -Xclang -include -Xclang /Users/albc/Desktop/CSE_335/proj2/Project2/Project2Starter/cmake-build-debug/MachineLib/CMakeFiles/MachineLib.dir/cmake_pch.hxx
+  INCLUDES = -I/Users/albc/Desktop/CSE_335/proj2/Project2/Project2Starter/CanadianExperienceLib -I/Users/albc/Desktop/CSE_335/proj2/Project2/Project2Starter/cmake-build-debug/_deps/miniaudio-src -isystem /usr/local/lib/wx/include/osx_cocoa-unicode-3.2 -isystem /usr/local/include/wx-3.2
+  OBJECT_DIR = MachineLib/CMakeFiles/MachineLib.dir
+  OBJECT_FILE_DIR = MachineLib/CMakeFiles/MachineLib.dir
+
 
 # =============================================================================
 # Link build statements for STATIC_LIBRARY target MachineLib
@@ -561,7 +569,7 @@ build MachineLib/CMakeFiles/MachineLib.dir/PegWheel.cpp.o: CXX_COMPILER__Machine
 #############################################
 # Link the static library MachineLib/libMachineLib.a
 
-build MachineLib/libMachineLib.a: CXX_STATIC_LIBRARY_LINKER__MachineLib_Debug MachineLib/CMakeFiles/MachineLib.dir/MachineSystem.cpp.o MachineLib/CMakeFiles/MachineLib.dir/MachineSystemFactory.cpp.o MachineLib/CMakeFiles/MachineLib.dir/MachineStandin.cpp.o MachineLib/CMakeFiles/MachineLib.dir/MachineDialog.cpp.o MachineLib/CMakeFiles/MachineLib.dir/MachineSystemImplemented.cpp.o MachineLib/CMakeFiles/MachineLib.dir/Machine.cpp.o MachineLib/CMakeFiles/MachineLib.dir/Machine1Factory.cpp.o MachineLib/CMakeFiles/MachineLib.dir/Component.cpp.o MachineLib/CMakeFiles/MachineLib.dir/Polygon.cpp.o MachineLib/CMakeFiles/MachineLib.dir/Shape.cpp.o MachineLib/CMakeFiles/MachineLib.dir/Motor.cpp.o MachineLib/CMakeFiles/MachineLib.dir/RotationSource.cpp.o MachineLib/CMakeFiles/MachineLib.dir/RotationSink.cpp.o MachineLib/CMakeFiles/MachineLib.dir/Pulley.cpp.o MachineLib/CMakeFiles/MachineLib.dir/PegWheel.cpp.o
+build MachineLib/libMachineLib.a: CXX_STATIC_LIBRARY_LINKER__MachineLib_Debug MachineLib/CMakeFiles/MachineLib.dir/MachineSystem.cpp.o MachineLib/CMakeFiles/MachineLib.dir/MachineSystemFactory.cpp.o MachineLib/CMakeFiles/MachineLib.dir/MachineStandin.cpp.o MachineLib/CMakeFiles/MachineLib.dir/MachineDialog.cpp.o MachineLib/CMakeFiles/MachineLib.dir/MachineSystemImplemented.cpp.o MachineLib/CMakeFiles/MachineLib.dir/Machine.cpp.o MachineLib/CMakeFiles/MachineLib.dir/Machine1Factory.cpp.o MachineLib/CMakeFiles/MachineLib.dir/Component.cpp.o MachineLib/CMakeFiles/MachineLib.dir/Polygon.cpp.o MachineLib/CMakeFiles/MachineLib.dir/Shape.cpp.o MachineLib/CMakeFiles/MachineLib.dir/Motor.cpp.o MachineLib/CMakeFiles/MachineLib.dir/RotationSource.cpp.o MachineLib/CMakeFiles/MachineLib.dir/RotationSink.cpp.o MachineLib/CMakeFiles/MachineLib.dir/Pulley.cpp.o MachineLib/CMakeFiles/MachineLib.dir/PegWheel.cpp.o MachineLib/CMakeFiles/MachineLib.dir/Peg.cpp.o
   ARCH_FLAGS = -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.0.sdk -mmacosx-version-min=10.14
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = MachineLib/CMakeFiles/MachineLib.dir

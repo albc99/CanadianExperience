@@ -31,7 +31,7 @@ public:
 
 //    virtual void SetRotation(double rotationSpeed) override;
 
-    RotationSink *GetSink(){ return &mSink; }
+    RotationSink *GetSink() { return &mSink; }
 };
 
 #endif //CANADIANEXPERIENCE_SHAPE_H
