@@ -30,17 +30,38 @@ void PegWheel::AddPeg(double angle)
     peg->SetAngle(angle);
     peg->SetPegWheel(this);
 
-    //this->sGetSource()->AddSink(peg->GetSink());
     mPegs.push_back(peg);
 }
 
 void PegWheel::Draw(std::shared_ptr<wxGraphicsContext> graphics, wxPoint location)
 {
+    bool reset;
+
     Component::Draw(graphics, location);
     for (auto peg : mPegs)
     {
         peg->Draw(graphics, location + wxPoint(GetX(), GetY()));
+        mLever->TripLever(peg);
         this->mSink.GetSource()->AddSink(peg->GetSink());
 
+        if (mLever->GetTouching())
+        {
+            reset = true;
+        }
+        else
+        {
+            reset = false;
+        }
     }
+    if (reset)
+    {
+        this->SetRotation(0);
+    }
+
+
+}
+
+void PegWheel::AddLever(std::shared_ptr<Lever> lever)
+{
+    mLever = lever;
 }

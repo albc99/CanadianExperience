@@ -44,7 +44,8 @@ Motor::Motor(std::wstring imagesDir) : Component()
 
 void Motor::Draw(std::shared_ptr<wxGraphicsContext> graphics, wxPoint location)
 {
-    this->Component::Draw(graphics, location);
+    //this->Component::Draw(graphics, location);
+    this->DrawPolygon(graphics, location.x + this->GetX(), location.y + this->GetY());
 
     mRotor.DrawPolygon(graphics, location.x + this->GetX(),
             location.y + this->GetY());

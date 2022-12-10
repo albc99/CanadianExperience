@@ -17,7 +17,8 @@ class Pulley : public Component {
 private:
     double mRadius;
     double mRotation = 1;
-    double mTime;
+    double mTime = 0;
+    //bool mBeltOnTop = true;
 
     RotationSink mSink;
     RotationSource mSource;
@@ -48,14 +49,16 @@ public:
 
 //    void SetRotationPulley(double rotation);
 
-//    virtual void Draw(std::shared_ptr<wxGraphicsContext> graphics, wxPoint location) override;
+    virtual void Draw(std::shared_ptr<wxGraphicsContext> graphics, wxPoint location) override;
     virtual void Update(double time) override;
     RotationSink *GetSink(){ return &mSink; }
     RotationSource *GetSource() { return &mSource; }
     double GetRadius() { return mRadius; }
 
-
     void Drive(std::shared_ptr<Pulley> pulley, bool over = true);
+
+
+    /// SetBeltOnTop
 
 };
 

@@ -23,6 +23,8 @@ private:
 
     PegWheel *mPegWheel = nullptr;
 
+    bool mTouching = false;
+
 public:
     /// Constructor
     Peg(std::wstring imagesDir, double rotation);
@@ -47,6 +49,9 @@ public:
     double GetAngle() { return mAngle; }
 
     //virtual void SetRotation(double rotation) override;
+
+    bool GetTouching() { return mTouching; }
+    void SetTouching(bool touching) { mTouching = touching; }
 };
 
 #endif //CANADIANEXPERIENCE_PEG_H

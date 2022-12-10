@@ -32,8 +32,8 @@ public:
     /// Destructor
     virtual ~Component() = default;
 
-//    /// Copy constructor/disabled
-//    Component(const Component&) = delete;
+    /// Copy constructor/disabled
+    Component(const Component&) = delete;
 
     /// Assignment operator/disabled
     void operator=(const Component&) = delete;

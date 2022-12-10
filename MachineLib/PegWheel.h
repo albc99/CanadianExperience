@@ -13,6 +13,7 @@
 #include "RotationSink.h"
 #include "Peg.h"
 #include "RotationSource.h"
+#include "Lever.h"
 //class Peg;
 
 class PegWheel : public Component {
@@ -25,7 +26,8 @@ private:
 
     Peg *mPeg;
 
-    std::vector<double> pegLocations;
+    std::shared_ptr<Lever> mLever;
+
 
 public:
     /// Constructor
@@ -45,6 +47,8 @@ public:
     RotationSink *GetSink() { return &mSink; }
 
     void AddPeg(double angle);
+
+    void AddLever(std::shared_ptr<Lever> lever);
 
     virtual void Draw(std::shared_ptr<wxGraphicsContext> graphics, wxPoint location) override;
 

@@ -3,7 +3,7 @@ project(MachineLib)
 set(SOURCE_FILES
         pch.h
         MachineSystem.h MachineSystem.cpp MachineSystemFactory.cpp MachineSystemFactory.h MachineStandin.cpp MachineStandin.h
-        MachineDialog.cpp MachineDialog.h include/machine-api.h MachineSystemImplemented.cpp MachineSystemImplemented.h Machine.cpp Machine.h Machine1Factory.cpp Machine1Factory.h Component.cpp Component.h Polygon.cpp Polygon.h Shape.cpp Shape.h Motor.cpp Motor.h RotationSource.cpp RotationSource.h RotationSink.cpp RotationSink.h Pulley.cpp Pulley.h PegWheel.cpp PegWheel.h Peg.cpp Peg.h)
+        MachineDialog.cpp MachineDialog.h include/machine-api.h MachineSystemImplemented.cpp MachineSystemImplemented.h Machine.cpp Machine.h Machine1Factory.cpp Machine1Factory.h Component.cpp Component.h Polygon.cpp Polygon.h Shape.cpp Shape.h Motor.cpp Motor.h RotationSource.cpp RotationSource.h RotationSink.cpp RotationSink.h Pulley.cpp Pulley.h PegWheel.cpp PegWheel.h Peg.cpp Peg.h Lever.cpp Lever.h)
 
 find_package(wxWidgets COMPONENTS core base xrc html xml REQUIRED)
 include(${wxWidgets_USE_FILE})

@@ -11,7 +11,7 @@
 #include "Pulley.h"
 #include "PegWheel.h"
 #include "Peg.h"
-//#include "Lever.h"
+#include "Lever.h"
 //#include "Instrument.h"
 
 /// The images directory in resources
@@ -55,7 +55,7 @@ std::shared_ptr<Machine> Machine1Factory::Create()
 
     // The motor
     auto motor = std::make_shared<Motor>(mImagesDir);
-    motor->SetPosition(-222, -48);
+    motor->SetPosition(-222, -95);
     // Make the motor rotate counter-clockwise at 0.2
     // revolutions per second. Negative means counter-clockwise
     motor->SetRotationSpeed(-0.2);
@@ -64,7 +64,7 @@ std::shared_ptr<Machine> Machine1Factory::Create()
     // The pulley driven by the motor
     auto pulley1 = std::make_shared<Pulley>(30);
     pulley1->SetImage(mImagesDir + L"/pulley2.png");
-    pulley1->SetPosition(motor->GetX(), motor->GetY() - 50);
+    pulley1->SetPosition(motor->GetX(), motor->GetY());
 
     // Connect the motor as a source to the pulley as a sink
     motor->GetSource()->AddSink(pulley1->GetSink());
@@ -147,7 +147,7 @@ std::shared_ptr<Machine> Machine1Factory::Create()
     // Used to keep track of hte last drum pulley added
     std::shared_ptr<Pulley> lastDrumPulley = pulley1;
 
-    auto pulley_t = std::make_shared<Pulley>(10);
+    auto pulley_t = std::make_shared<Pulley>(25);
     pulley_t->SetImage(mImagesDir + L"/pulley2.png");
     pulley_t->SetPosition(pulleyX, PulleyY);
     pulley1->Drive(pulley_t);
@@ -157,7 +157,7 @@ std::shared_ptr<Machine> Machine1Factory::Create()
     pulley_t->GetSource()->AddSink(pegWheel->GetSink());
 
 
-    auto temp = {1, 3, 5, 7, 9, 11, 13, 15};
+    auto temp = {0, 8};
         for(double location : temp)
         {
             pegWheel->AddPeg(location / 16.0);
@@ -165,6 +165,11 @@ std::shared_ptr<Machine> Machine1Factory::Create()
 
     machine->AddComponent(pegWheel);
     machine->AddComponent(pulley_t);
+
+    auto lever = std::make_shared<Lever>(mImagesDir);
+    lever->SetPosition(pulleyX, LeverY);
+    machine->AddComponent(lever);
+    pegWheel->AddLever(lever);
 
 //
 //    for(int i=0; i<5; i++)
