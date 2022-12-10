@@ -42,7 +42,7 @@ public:
     /// Assignment operator/disabled
     void operator=(const PegWheel&) = delete;
 
-    //virtual void SetRotation(double rotation) override;
+    virtual void SetRotation(double rotation) override;
 
     RotationSink *GetSink() { return &mSink; }
 

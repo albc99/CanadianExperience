@@ -11,11 +11,13 @@
 #include "Component.h"
 #include "Peg.h"
 #include "RotationSource.h"
+#include "Shape.h"
 
 class Lever : public Component {
 private:
 
     cse335::Polygon mMount;
+    Shape mDrumStick;
 
     RotationSource mSource;
 
@@ -40,6 +42,7 @@ public:
 
     bool GetTouching() { return mTouching; }
     void SetTouching(bool touching) { mTouching = touching; }
+    Shape *GetDrumStick() { return &mDrumStick; }
 };
 
 #endif //CANADIANEXPERIENCE_LEVER_H

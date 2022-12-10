@@ -33,15 +33,21 @@ Lever::Lever(std::wstring imagesDir)
 {
     this->Rectangle(-LeverWidth/2, LeverHeight/2, LeverWidth, LeverHeight);
     mMount.Rectangle(-LeverWidth/2, LeverHeight/2, LeverWidth, LeverHeight);
+    mDrumStick.BottomCenteredRectangle(5, 75);
 
     this->SetImage(imagesDir + LeverImage);
     mMount.SetImage(imagesDir + LeverMountImage);
+    mDrumStick.SetImage(imagesDir + L"/drumstick.png");
+
+    mDrumStick.SetRotation(-0.02);
 }
 
 void Lever::Draw(std::shared_ptr<wxGraphicsContext> graphics, wxPoint location)
 {
     Component::Draw(graphics, location);
     mMount.DrawPolygon(graphics, location.x + this->GetX(), location.y + this->GetY());
+    mDrumStick.DrawPolygon(graphics, location.x + this->GetX(), location.y + this->GetY());
+
 }
 
 void Lever::TripLever(Peg *peg)
@@ -67,12 +73,17 @@ void Lever::TripLever(Peg *peg)
     // Determine if the peg
     if(PegEnd <= angle && angle <= PegStart)
     {
-        mTouching = true;
+        this->SetTouching(true);
 
         // This peg is in range
         double t = (angle - PegStart) / (PegEnd - PegStart);
 
         this->SetRotation(t * MaxRotation);
+        mDrumStick.SetRotation(t * MaxRotation);
+    }
+    else
+    {
+        this->SetRotation(0);
     }
 
 }

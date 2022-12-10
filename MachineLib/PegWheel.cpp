@@ -18,10 +18,14 @@ PegWheel::PegWheel(std::wstring imagesDir) : mImagesDir(imagesDir)
     mSink.SetComponent(this);
 }
 
-//void PegWheel::SetRotation(double rotation)
-//{
-//    Component::SetRotation(rotation);
-//}
+void PegWheel::SetRotation(double rotation)
+{
+    Component::SetRotation(rotation);
+    if (!mLever->GetTouching())
+    {
+        mLever->SetRotation(0);
+    }
+}
 
 void PegWheel::AddPeg(double angle)
 {
@@ -35,28 +39,22 @@ void PegWheel::AddPeg(double angle)
 
 void PegWheel::Draw(std::shared_ptr<wxGraphicsContext> graphics, wxPoint location)
 {
-    bool reset;
+    bool reset = false;
 
     Component::Draw(graphics, location);
     for (auto peg : mPegs)
     {
-        peg->Draw(graphics, location + wxPoint(GetX(), GetY()));
-        mLever->TripLever(peg);
-        this->mSink.GetSource()->AddSink(peg->GetSink());
+        mLever->SetRotation(0);
 
-        if (mLever->GetTouching())
-        {
-            reset = true;
-        }
-        else
-        {
-            reset = false;
-        }
+        peg->Draw(graphics, location + wxPoint(GetX(), GetY()));
+        this->mSink.GetSource()->AddSink(peg->GetSink());
+        mLever->GetDrumStick()->SetRotation(-0.02);
+        mLever->TripLever(peg);
     }
-    if (reset)
-    {
-        this->SetRotation(0);
-    }
+//    if (reset)
+//    {
+//        mLever->SetRotation(0);
+//    }
 
 
 }
