@@ -35,6 +35,7 @@ public:
     void SetRotationSpeed(double rotationSpeed) { mRotationSpeed = rotationSpeed; }
 
     void SetSource(RotationSource *source) { mRotationSource = source; }
+    RotationSource *GetSource() { return mRotationSource; }
 
 //    Component *GetComponent() { return mComponent; }
     void SetComponent(Component *component) { mComponent = component; }

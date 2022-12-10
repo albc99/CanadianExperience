@@ -10,6 +10,7 @@
 #include "Motor.h"
 #include "Pulley.h"
 #include "PegWheel.h"
+#include "Peg.h"
 //#include "Lever.h"
 //#include "Instrument.h"
 
@@ -146,7 +147,7 @@ std::shared_ptr<Machine> Machine1Factory::Create()
     // Used to keep track of hte last drum pulley added
     std::shared_ptr<Pulley> lastDrumPulley = pulley1;
 
-    auto pulley_t = std::make_shared<Pulley>(25);
+    auto pulley_t = std::make_shared<Pulley>(10);
     pulley_t->SetImage(mImagesDir + L"/pulley2.png");
     pulley_t->SetPosition(pulleyX, PulleyY);
     pulley1->Drive(pulley_t);
@@ -155,7 +156,8 @@ std::shared_ptr<Machine> Machine1Factory::Create()
     pegWheel->SetPosition(pulleyX, PulleyY);
     pulley_t->GetSource()->AddSink(pegWheel->GetSink());
 
-    auto temp = {0, 4};
+
+    auto temp = {1, 3, 5, 7, 9, 11, 13, 15};
         for(double location : temp)
         {
             pegWheel->AddPeg(location / 16.0);
