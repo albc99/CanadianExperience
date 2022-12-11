@@ -7,6 +7,7 @@
 
 #ifndef CANADIANEXPERIENCE_MACHINESYSTEMIMPLEMENTED_H
 #define CANADIANEXPERIENCE_MACHINESYSTEMIMPLEMENTED_H
+#include <miniaudio.h>
 
 #include "MachineSystem.h"
 #include "Machine.h"
@@ -28,7 +29,7 @@ private:
 
 public:
     /// Constructor
-    MachineSystemImplemented(std::wstring resourcesDir);
+    MachineSystemImplemented(std::wstring resourcesDir, ma_engine *engine);
 
     /// Constructor
     MachineSystemImplemented() = delete;

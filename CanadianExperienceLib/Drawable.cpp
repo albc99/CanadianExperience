@@ -39,7 +39,6 @@ void Drawable::SetActor(Actor *actor)
     mChannel.SetName(actor->GetName() + L":" + mName);
 }
 
-
 /**
  * Set a keyframe based on the current position.
  */

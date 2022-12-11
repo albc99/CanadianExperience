@@ -10,6 +10,7 @@
 #include "SpartyFactory.h"
 #include "Actor.h"
 #include "ImageDrawable.h"
+#include "MachineDrawable.h"
 
 using namespace std;
 
@@ -39,6 +40,16 @@ std::shared_ptr<Picture> PictureFactory::Create(std::wstring resourcesDir, ma_en
     background->SetRoot(backgroundI);
     picture->AddActor(background);
 
+    shared_ptr<MachineDrawable> machine = make_shared<MachineDrawable>(resourcesDir, audioEngine, picture->GetTimeline());
+    machine->SetLocation(wxPoint(350,500));
+    machine->SetStartFrame(30);
+    machine->SetEndFrame(200);
+
+    auto machine1 = make_shared<Actor>(L"Machine1");
+    machine1->AddDrawable(machine);
+    picture->AddActor(machine1);
+
+
     // Create and add Harold
     HaroldFactory haroldFactory;
     auto harold = haroldFactory.Create(imagesDir);
@@ -55,5 +66,7 @@ std::shared_ptr<Picture> PictureFactory::Create(std::wstring resourcesDir, ma_en
     picture->AddActor(sparty);
 
     return picture;
+
+
 }
 

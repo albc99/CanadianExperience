@@ -12,6 +12,7 @@
 #include "Peg.h"
 #include "RotationSource.h"
 #include "Shape.h"
+#include "Instrument.h"
 
 class Lever : public Component {
 private:
@@ -22,6 +23,10 @@ private:
     RotationSource mSource;
 
     bool mTouching = false;
+
+    std::shared_ptr<Instrument> mInstrument;
+
+    //Instrument *mInstrument = nullptr;
 
 public:
     /// Constructor
@@ -43,6 +48,12 @@ public:
     bool GetTouching() { return mTouching; }
     void SetTouching(bool touching) { mTouching = touching; }
     Shape *GetDrumStick() { return &mDrumStick; }
+    RotationSource *GetSource() { return &mSource; }
+    void PegsEnd();
+
+    //void SetInstrument(Instrument *instrument) { mInstrument = instrument; }
+
+    void SetStruckComponent(std::shared_ptr<Instrument> instrument) { mInstrument = instrument; }
 };
 
 #endif //CANADIANEXPERIENCE_LEVER_H

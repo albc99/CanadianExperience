@@ -57,7 +57,7 @@ public:
     virtual ~Drawable() {}
 
     /** Default constructor disabled */
-    Drawable() = delete;
+    Drawable();
     /** Copy constructor disabled */
     Drawable(const Drawable &) = delete;
     /** Assignment operator disabled */

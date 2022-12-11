@@ -26,7 +26,7 @@ private:
 
     Peg *mPeg;
 
-    std::shared_ptr<Lever> mLever;
+    std::shared_ptr<Lever> mLever = nullptr;
 
 
 public:

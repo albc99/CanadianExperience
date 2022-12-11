@@ -8,7 +8,7 @@
 #include "MachineSystemImplemented.h"
 
 
-MachineSystemImplemented::MachineSystemImplemented(std::wstring resourcesDir) : mResourcesDir(resourcesDir)
+MachineSystemImplemented::MachineSystemImplemented(std::wstring resourcesDir, ma_engine *engine) : mResourcesDir(resourcesDir), mAudioEngine(engine)
 {
     SetMachineNumber(1);
 }

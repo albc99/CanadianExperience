@@ -12,7 +12,7 @@
 #include "PegWheel.h"
 #include "Peg.h"
 #include "Lever.h"
-//#include "Instrument.h"
+#include "Instrument.h"
 
 /// The images directory in resources
 const std::wstring ImagesDirectory = L"/images";
@@ -69,43 +69,45 @@ std::shared_ptr<Machine> Machine1Factory::Create()
     // Connect the motor as a source to the pulley as a sink
     motor->GetSource()->AddSink(pulley1->GetSink());
 
-//    //
-//    // The instruments
-//    //
-//    auto kick = std::make_shared<Instrument>(mImagesDir + L"/drum.png",
-//            mAudioDir + L"/kick.wav",
-//            mAudioEngine);
-//    kick->CenteredSquare(100);
-//    kick->SetPosition(-142, -310);
-//    machine->AddComponent(kick);
-//
-//    auto tom = std::make_shared<Instrument>(mImagesDir + L"/drum.png",
-//            mAudioDir + L"/tom.wav",
-//            mAudioEngine);
-//    tom->CenteredSquare(60);
-//    tom->SetPosition(-55, -305);
-//    machine->AddComponent(tom);
-//
-//    auto snare = std::make_shared<Instrument>(mImagesDir + L"/drum.png",
-//            mAudioDir + L"/snare.wav",
-//            mAudioEngine);
-//    snare->CenteredSquare(50);
-//    snare->SetPosition(25, -305);
-//    machine->AddComponent(snare);
-//
-//    auto cowbell = std::make_shared<Instrument>(mImagesDir + L"/cowbell.png",
-//            mAudioDir + L"/cowbell.wav",
-//            mAudioEngine);
-//    cowbell->CenteredSquare(60);
-//    cowbell->SetPosition(105, -315);
-//    machine->AddComponent(cowbell);
-//
-//    auto cymbal = std::make_shared<Instrument>(mImagesDir + L"/cymbal.png",
-//            mAudioDir + L"/cymbal.wav",
-//            mAudioEngine);
-//    cymbal->CenteredSquare(80);
-//    cymbal->SetPosition(188, -325);
-//    machine->AddComponent(cymbal);
+
+
+
+
+
+    auto kick = std::make_shared<Instrument>(mImagesDir + L"/drum.png",
+            mAudioDir + L"/kick.wav",
+            mAudioEngine);
+    kick->CenteredSquare(100);
+    kick->SetPosition(-142, -310);
+    machine->AddComponent(kick);
+
+    auto tom = std::make_shared<Instrument>(mImagesDir + L"/drum.png",
+            mAudioDir + L"/tom.wav",
+            mAudioEngine);
+    tom->CenteredSquare(60);
+    tom->SetPosition(-55, -305);
+    machine->AddComponent(tom);
+
+    auto snare = std::make_shared<Instrument>(mImagesDir + L"/drum.png",
+            mAudioDir + L"/snare.wav",
+            mAudioEngine);
+    snare->CenteredSquare(50);
+    snare->SetPosition(25, -305);
+    machine->AddComponent(snare);
+
+    auto cowbell = std::make_shared<Instrument>(mImagesDir + L"/cowbell.png",
+            mAudioDir + L"/cowbell.wav",
+            mAudioEngine);
+    cowbell->CenteredSquare(60);
+    cowbell->SetPosition(105, -315);
+    machine->AddComponent(cowbell);
+
+    auto cymbal = std::make_shared<Instrument>(mImagesDir + L"/cymbal.png",
+            mAudioDir + L"/cymbal.wav",
+            mAudioEngine);
+    cymbal->CenteredSquare(80);
+    cymbal->SetPosition(188, -325);
+    machine->AddComponent(cymbal);
 
     // Define standard locations for the pulleys, peg wheels, and levers
     const int PulleyY = -164;
@@ -115,34 +117,34 @@ std::shared_ptr<Machine> Machine1Factory::Create()
     const int PulleySpacing = 80;   // How far the pulleys are apart
     const int LeverY = -229;        // Y location for a level
 
-//    /// Structure used to store data for the
-//    /// five different drum systems (columns)
-//    struct DrumData {
-//        /// The instrument for this one
-//        std::shared_ptr<Instrument> mInstrument;
-//
-//        /// The peg locations for each of the peg wheels
-//        /// To make the music easier to determine, these
-//        /// are divided by 16 so instead of turns we have
-//        /// 16 positions around the peg wheel.
-//        std::vector<double> mPegLocations;
-//
-//        /// Radius of the pulley that drives the peg wheel
-//        double mPulleyRadius;
-//
-//        /// Constant amount added to the peg wheel rotation
-//        /// to ensure the drums are synced to each other
-//        double mPegWheelPhase;
-//    };
-//
-//    /// The actual drum data
-//    const DrumData drumData[5] = {
-//            {kick, {0, 8}, 10, 0.05},                       // Kick drum
-//            {tom, {1, 3, 5, 7, 9, 11, 13, 15}, 20, 0.01},   // Tom
-//            {snare, {2, 6, 10, 14}, 20, 0.01},              // Snare
-//            {cowbell, {0, 4, 8, 12}, 10, 0.05},             // More cowbell!
-//            {cymbal, {8}, 20, 0.01}                         // Cymbal
-//    };
+    /// Structure used to store data for the
+    /// five different drum systems (columns)
+    struct DrumData {
+        /// The instrument for this one
+        std::shared_ptr<Instrument> mInstrument;
+
+        /// The peg locations for each of the peg wheels
+        /// To make the music easier to determine, these
+        /// are divided by 16 so instead of turns we have
+        /// 16 positions around the peg wheel.
+        std::vector<double> mPegLocations;
+
+        /// Radius of the pulley that drives the peg wheel
+        double mPulleyRadius;
+
+        /// Constant amount added to the peg wheel rotation
+        /// to ensure the drums are synced to each other
+        double mPegWheelPhase;
+    };
+
+    /// The actual drum data
+    const DrumData drumData[5] = {
+            {kick, {0, 8}, 10, 0.05},                       // Kick drum
+            {tom, {1, 3, 5, 7, 9, 11, 13, 15}, 20, 0.01},   // Tom
+            {snare, {2, 6, 10, 14}, 20, 0.01},              // Snare
+            {cowbell, {0, 4, 8, 12}, 10, 0.05},             // More cowbell!
+            {cymbal, {8}, 20, 0.01}                         // Cymbal
+    };
 
     // Used to keep track of hte last drum pulley added
     std::shared_ptr<Pulley> lastDrumPulley = pulley1;
@@ -155,7 +157,6 @@ std::shared_ptr<Machine> Machine1Factory::Create()
     auto pegWheel = std::make_shared<PegWheel>(mImagesDir);
     pegWheel->SetPosition(pulleyX, PulleyY);
     pulley_t->GetSource()->AddSink(pegWheel->GetSink());
-
 
     auto temp = {0, 8};
         for(double location : temp)
@@ -170,6 +171,7 @@ std::shared_ptr<Machine> Machine1Factory::Create()
     lever->SetPosition(pulleyX, LeverY);
     machine->AddComponent(lever);
     pegWheel->AddLever(lever);
+    lever->SetStruckComponent(kick);
 
 //
 //    for(int i=0; i<5; i++)
@@ -229,7 +231,7 @@ std::shared_ptr<Machine> Machine1Factory::Create()
 //        lever->GetSource()->AddSink(stick->GetSink());
 //        stick->GetSink()->SetPhase(-0.02);
 //
-//        // Connect the lever (source of strikes) to the instrument
+//  // Connect the lever (source of strikes) to the instrument
 //        lever->SetStruckComponent(drumDatum.mInstrument);
 //
 //        //

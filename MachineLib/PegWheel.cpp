@@ -21,9 +21,18 @@ PegWheel::PegWheel(std::wstring imagesDir) : mImagesDir(imagesDir)
 void PegWheel::SetRotation(double rotation)
 {
     Component::SetRotation(rotation);
+    for (auto peg : mPegs)
+    {
+        peg->SetRotation(rotation);
+    }
+
+    for (auto peg : mPegs)
+    {
+        mLever->TripLever(peg);
+    }
     if (!mLever->GetTouching())
     {
-        mLever->SetRotation(0);
+        mLever->PegsEnd();
     }
 }
 
@@ -44,7 +53,7 @@ void PegWheel::Draw(std::shared_ptr<wxGraphicsContext> graphics, wxPoint locatio
     Component::Draw(graphics, location);
     for (auto peg : mPegs)
     {
-        mLever->SetRotation(0);
+//        mLever->SetRotation(0);
 
         peg->Draw(graphics, location + wxPoint(GetX(), GetY()));
         this->mSink.GetSource()->AddSink(peg->GetSink());
