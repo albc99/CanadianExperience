@@ -39,6 +39,8 @@ public:
 
 //    Component *GetComponent() { return mComponent; }
     void SetComponent(Component *component) { mComponent = component; }
+
+    void SetPhase(double phase) { mRotationSpeed += phase; }
 };
 
 #endif //CANADIANEXPERIENCE_ROTATIONSINK_H
